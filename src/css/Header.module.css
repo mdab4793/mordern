@@ -1,0 +1,130 @@
+.container {
+  width: 100%;
+  position: fixed;
+  font-family: "Courier New", Courier, monospace;
+  z-index: 2;
+}
+.title {
+  font-size: 40px;
+}
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(1, 1, 1, 0.3);
+  font-weight: bolder;
+}
+.toggleBtn {
+  display: none;
+}
+.menu {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  width: 40%;
+  font-size: 20px;
+}
+
+.menu li,
+.title,
+.subContainer li {
+  color: wheat;
+}
+.title:hover,
+.menu li:hover,
+.menu li:hover {
+  color: gray;
+}
+
+.login {
+  width: 30px;
+  font-family: "Courier New", Courier, monospace;
+}
+.logout {
+  width: 30px;
+  font-family: "Courier New", Courier, monospace;
+}
+@media screen and (max-width: 1200px) {
+  .navBar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
+
+  .toggleBtn {
+    display: flex;
+    color: wheat;
+    font-size: 25px;
+    position: relative;
+    bottom: 70px;
+    left: 1000px;
+  }
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .menu li {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navBar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
+  .title {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  .toggleBtn {
+    display: flex;
+    color: wheat;
+    font-size: 25px;
+    position: relative;
+    bottom: 40px;
+    left: 650px;
+  }
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-size: 10px;
+  }
+  .menu li {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 479px) {
+  .container {
+    width: 100%;
+  }
+  .navBar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
+  .title {
+    font-size: 15px;
+  }
+  .toggleBtn {
+    display: flex;
+    color: wheat;
+    font-size: 10px;
+    position: relative;
+    left: 500%;
+    bottom: 25px;
+  }
+  .menu {
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    font-size: 7px;
+  }
+}

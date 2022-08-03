@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+  background-image: url("https://github.com/mdab4793/shop/blob/main/background/9.jpeg?raw=true");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  font-family: "Orbitron", sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+.section {
+  margin: 40px;
+}
+.section img {
+  transition: all 0.2s linear;
+}
+.section:hover img {
+  transform: scale(1.2);
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+  }
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 479px) {
+}
