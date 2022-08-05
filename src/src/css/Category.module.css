@@ -1,0 +1,32 @@
+.container {
+  color: wheat;
+  font-family: "Orbitron", sans-serif;
+  background: none;
+}
+.contentImg {
+  width: 700px;
+  height: 550px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.container :hover {
+  color: gray;
+}
+.container h3 {
+  padding: 40px;
+  font-size: 35px;
+}
+.container p {
+  font-size: 30px;
+}
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 768px) {
+  .container img {
+    width: 450px;
+    height: 450px;
+  }
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 479px) {
+}

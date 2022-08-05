@@ -1,0 +1,60 @@
+.bg {
+  width: 100%;
+  height: 1200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  background-image: url("https://github.com/mdab4793/shop/blob/main/background/61.jpeg?raw=true");
+}
+
+.container {
+  width: 400px;
+  height: 50%;
+
+  text-align: center;
+  position: relative;
+  top: 200px;
+  left: 40%;
+  background-color: white;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  overflow: auto;
+}
+.content {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  border-radius: 10px;
+}
+
+.content h1 {
+  color: wheat;
+}
+.content label {
+  padding-bottom: 5px;
+  color: wheat;
+}
+.content p {
+  padding-bottom: 5px;
+  color: wheat;
+}
+
+.content input {
+  margin-bottom: 30px;
+}
+.button {
+  width: 100%;
+  display: flex;
+  margin: auto;
+}
+.login {
+  width: 500px;
+  height: 20px;
+  margin-right: 10px;
+}
+.regi {
+  width: 500px;
+  margin-left: 10px;
+}

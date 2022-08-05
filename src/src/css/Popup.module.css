@@ -1,0 +1,18 @@
+.popup {
+  width: 50%;
+  height: 170px;
+  position: absolute;
+  top: 400px;
+  background: rgba(1, 1, 1, 0.4);
+  font-size: 20px;
+}
+.popup button {
+  width: 30%;
+  background-color: black;
+  border-radius: 15px;
+  border-style: none;
+  color: wheat;
+  padding: 15px;
+  margin: 10px;
+  font-size: 15px;
+}
