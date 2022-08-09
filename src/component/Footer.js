@@ -1,5 +1,4 @@
 import styles from "../css/Footer.module.css";
-import Header from "./Header";
 
 function Footer() {
   return (

@@ -1,8 +1,7 @@
-import Header from "../component/Header";
 import { useEffect, useState } from "react";
 import styles from "../css/Detail.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Detail from "../component/Detail";
+import Category from "../component/Category";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartArrowDown,
@@ -10,47 +9,54 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { addItem } from "../store";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import Footer from "../component/Footer";
-import Navbar from "../component/Navbar";
-import Category from "../component/Category";
 
-function TechDetail(props) {
+function Detail(props) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [posts, setPosts] = useState([]);
-  const [word] = useState("Tech");
   const dispatch = useDispatch();
   let [popup, setPopup] = useState(false);
 
-  useEffect(() => {
-    axios
-      .get(
-        "https://raw.githubusercontent.com/mdab4793/shop/main/Tech/Tech.json"
-      )
-      .then((result) => {
-        setPosts(result.data);
-      });
-  }, []);
+  const [content, setContent] = useState();
+
+  const onChangeHanlder = (e) => {
+    setContent(e.currentTarget.value);
+  };
+
+  const Options = [
+    { key: 0, value: props.posts[id]?.color[""] },
+    { key: 1, value: props.posts[id]?.color[1] },
+    { key: 2, value: props.posts[id]?.color[2] },
+    { key: 3, value: props.posts[id]?.color[3] },
+  ];
 
   return (
     <body>
       <div className={styles.bg}>
         <div className={styles.container}>
           <div className={styles.contentImg}>
-            <img
-              src={
-                "https://github.com/mdab4793/shop/blob/main/Tech/" +
-                [id] +
-                ".jpg?raw=true"
-              }
-              alt="detail"
-            />
+            <img src={props.posts[id]?.url1} alt="detail" />
           </div>
-          <main className={styles.main}>
+          <main className={styles.wrapper}>
             <div className={styles.mainContent}>
-              <h1>{word} </h1>
-              <Detail title={posts[id]?.title} price={posts[id]?.price} />{" "}
+              <main className={styles.main}>
+                <h1>{props.posts[id]?.filter}</h1>
+                <h2>{props.posts[id]?.title}</h2>
+                <h3>{props.posts[id]?.name}</h3>
+                <p>${props.posts[id]?.price}</p>
+                <select onChange={onChangeHanlder} value={content}>
+                  {Options.map(
+                    (
+                      a,
+                      i //color선택
+                    ) => (
+                      <option key={a.key} value={a.key}>
+                        {a.value}
+                      </option>
+                    )
+                  )}
+                </select>
+              </main>
               <br />
               {props.emailCheck == false ? ( //로그인전일때 누르면 로그인실행
                 <button
@@ -70,9 +76,11 @@ function TechDetail(props) {
                     setPopup(true);
                     dispatch(
                       addItem({
-                        id: posts[id]?.id,
-                        name: posts[id]?.title,
-                        price: posts[id]?.price,
+                        id: props.posts[id]?.id,
+                        img: props.posts[id]?.url1,
+                        name: props.posts[id]?.title,
+                        price: props.posts[id]?.price,
+                        color: props.posts[id]?.color[content],
                         count: 1,
                       })
                     );
@@ -83,32 +91,36 @@ function TechDetail(props) {
               )}
               <br />{" "}
               {popup == true ? ( //장바구니 추가popup
-                <section className={styles.popup}>
-                  <h4>장바구니 추가완료!</h4>
-                  <button
-                    onClick={() => {
-                      navigate("/cart");
-                    }}
-                  >
-                    Go to Cart
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPopup(false);
-                    }}
-                  >
-                    Close
-                  </button>
-                </section>
+                <div>
+                  <section className={styles.popup}>
+                    <h4>장바구니 추가완료!</h4>
+                    <button
+                      onClick={() => {
+                        navigate("/cart");
+                      }}
+                    >
+                      Go Cart
+                    </button>
+                    <button
+                      onClick={() => {
+                        setPopup(false);
+                      }}
+                    >
+                      Close
+                    </button>
+                  </section>
+                </div>
               ) : null}
               <button
                 className={styles.buy}
                 onClick={() => {
                   dispatch(
                     addItem({
-                      id: posts[id]?.id,
-                      name: posts[id]?.title,
-                      price: posts[id]?.price,
+                      id: props.posts[id]?.id,
+                      img: props.posts[id]?.url1,
+                      name: props.posts[id]?.title,
+                      price: props.posts[id]?.price,
+                      color: props.posts[id]?.color[content],
                       count: 1,
                     })
                   );
@@ -117,7 +129,7 @@ function TechDetail(props) {
                 <FontAwesomeIcon icon={faCreditCard} size="2x" />
               </button>
               <br /> <br />
-              <p>
+              <p className={styles.text}>
                 본 제품은 해외직구상품으로 구매시 1~2주가 소요되며,
                 <br /> 단순 변심에의한 반품은 불가합니다.
               </p>
@@ -133,4 +145,4 @@ function TechDetail(props) {
   );
 }
 
-export default TechDetail;
+export default Detail;

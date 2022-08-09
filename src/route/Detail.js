@@ -2,60 +2,49 @@ import { useEffect, useState } from "react";
 import styles from "../css/Detail.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-import axios from "axios";
-import Footer from "../component/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartArrowDown,
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
 import { addItem } from "../store";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import Footer from "../component/Footer";
 
-function FurnitureDetail(props) {
+function Detail(props) {
   const { id } = useParams();
   const navigate = useNavigate();
+  let state = useSelector((state) => {
+    return state;
+  });
+
   const dispatch = useDispatch();
   let [popup, setPopup] = useState(false);
 
-  const [content, setContent] = useState();
-
-  const onChangeHanlder = (e) => {
-    setContent(e.currentTarget.value);
-  };
-  const Options = [
-    { key: 0, value: props.posts[id - 24]?.color[""] },
-    { key: 1, value: props.posts[id - 24]?.color[1] },
-    { key: 2, value: props.posts[id - 24]?.color[2] },
-    { key: 3, value: props.posts[id - 24]?.color[3] },
-  ];
-
+  useEffect(() => {
+    let 꺼낸거 = localStorage.getprops.posts("watched");
+    꺼낸거 = JSON.parse(꺼낸거);
+    꺼낸거.push(props.posts[id]);
+    꺼낸거 = new Set(꺼낸거);
+    꺼낸거 = Array.from(꺼낸거);
+    localStorage.setprops.posts("watched", JSON.stringify(꺼낸거));
+  }, []);
+  console.log(props.posts[id]);
   return (
     <body>
       <div className={styles.bg}>
         <div className={styles.container}>
           <div className={styles.contentImg}>
-            <img src={props.posts[id - 24]?.url1} alt="detail" />
+            <img src={props.posts[id]?.url} alt="detail" />
           </div>
           <main className={styles.wrapper}>
             <div className={styles.mainContent}>
               <main className={styles.main}>
-                <h1>{props.posts[id - 24]?.filter}</h1>
-                <h2>{props.posts[id - 24]?.title}</h2>
-                <h3>{props.posts[id - 24]?.name}</h3>
-                <p>${props.posts[id - 24]?.price}</p>
-                <select onChange={onChangeHanlder} value={content}>
-                  {Options.map(
-                    (
-                      a,
-                      i //color선택
-                    ) => (
-                      <option key={a.key} value={a.key}>
-                        {a.value}
-                      </option>
-                    )
-                  )}
-                </select>
+                <h1>{props.posts[id]?.title}</h1>
+                <h2>{props.posts[id]?.name}</h2>
+                <p>${props.posts[id]?.price}</p>
               </main>
               <br />
               {props.emailCheck == false ? ( //로그인전일때 누르면 로그인실행
@@ -76,11 +65,10 @@ function FurnitureDetail(props) {
                     setPopup(true);
                     dispatch(
                       addItem({
-                        id: props.posts[id - 24]?.id,
-                        img: props.posts[id - 24]?.url1,
-                        name: props.posts[id - 24]?.title,
-                        price: props.posts[id - 24]?.price,
-                        color: props.posts[id - 24]?.color[content],
+                        id: props.posts[id]?.id,
+                        img: props.posts[id]?.url,
+                        name: props.posts[id]?.name,
+                        price: props.posts[id]?.price,
                         count: 1,
                       })
                     );
@@ -116,11 +104,9 @@ function FurnitureDetail(props) {
                 onClick={() => {
                   dispatch(
                     addItem({
-                      id: props.posts[id - 24]?.id,
-                      img: props.posts[id - 24]?.url1,
-                      name: props.posts[id - 24]?.title,
-                      price: props.posts[id - 24]?.price,
-                      color: props.posts[id - 24]?.color[content],
+                      id: props.posts[id]?.id,
+                      name: props.posts[id]?.name,
+                      price: props.posts[id]?.price,
                       count: 1,
                     })
                   );
@@ -145,4 +131,4 @@ function FurnitureDetail(props) {
   );
 }
 
-export default FurnitureDetail;
+export default Detail;

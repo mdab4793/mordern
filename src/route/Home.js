@@ -1,12 +1,5 @@
-import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import styles from "../css/Home.module.css";
 import Footer from "../component/Footer";
-import Header from "../component/Header";
-import Accessory from "./Accessory";
-import Funiture from "./Furniture";
-import Tech from "./Tech";
-import Navbar from "../component/Navbar";
 
 const Home = () => {
   return (

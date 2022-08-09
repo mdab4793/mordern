@@ -40,7 +40,5 @@ export let { addCount, addMin, addItem, removeItem } = cart.actions;
 
 export default configureStore({
   //다른곳에서 쓰려면등록   등록하는곳
-  reducer: {
-    cart: cart.reducer,
-  },
+  reducer: { cart: cart.reducer },
 });

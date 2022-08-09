@@ -23,12 +23,45 @@
 .section:hover img {
   transform: scale(1.2);
 }
+.wrapper {
+  color: wheat;
+  font-family: "Orbitron", sans-serif;
+  background: none;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+}
+.wrapper img {
+  width: 600px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.wrapper :hover {
+  color: gray;
+}
 
+.wrapper h3 {
+  padding: 40px;
+  font-size: 35px;
+}
+
+.wrapper p {
+  font-size: 30px;
+  padding: 30px;
+}
 @media screen and (max-width: 1200px) {
+  .container {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .main {
+  .container {
+    width: 100%;
+  }
+  .wrapper img {
+    width: 450px;
+    height: 450px;
   }
 }
 @media only screen and (min-device-width: 375px) and (max-device-width: 479px) {

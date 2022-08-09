@@ -13,38 +13,31 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { addItem } from "../store";
 import Footer from "../component/Footer";
-
-function Funiture() {
-  const [posts, setPosts] = useState([]);
+import ScrollTop from "../component/ScrollTop";
+function Funiture(props) {
   const [limit, setLimit] = useState(4);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [wish, setWish] = useState(["찜하기💙"]);
-  useEffect(() => {
-    axios
-      .get(
-        "https://raw.githubusercontent.com/mdab4793/shop/main/furniture/Funiture.json"
-      )
-      .then((result) => {
-        setPosts(result.data);
-      });
-  }, []);
 
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        {posts.slice(offset, offset + limit).map(({ id, title, price }) => (
-          <section className={styles.section} key={id}>
-            <Link to={`/furnituredetail/${id}`}>
+        {props.posts
+          .slice(offset, offset + limit)
+          .map(({ id, title, price }) => (
+            <section className={styles.section} key={id}>
               <Category
-                url={posts[id - 25]?.url}
-                title={posts[id - 25]?.title}
-                price={posts[id - 25]?.price}
+                id={id}
+                filter={props.posts[id - 24]?.filter}
+                url1={props.posts[id - 24]?.url1}
+                title={props.posts[id - 24]?.title}
+                price={props.posts[id - 24]?.price}
               />
-            </Link>
-            {/* <button
+
+              {/* <button
               onClick={() => {
                 let copy = [...wish];
                 copy = copy + "찜완료❤️";
@@ -53,18 +46,19 @@ function Funiture() {
             >
               {wish}
             </button> */}
-            <br />
-          </section>
-        ))}
-      </main>
+              <br />
+            </section>
+          ))}
+      </main>{" "}
+      <ScrollTop />
       <div>
         <Pagination
-          total={posts.length}
+          total={props.posts.length}
           limit={limit}
           page={page}
           setPage={setPage}
         />
-      </div>{" "}
+      </div>
       <footer className={styles.footer}>
         <Footer />
       </footer>

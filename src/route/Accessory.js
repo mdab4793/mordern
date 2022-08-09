@@ -12,36 +12,56 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addItem } from "../store";
 import Footer from "../component/Footer";
+import ScrollTop from "../component/ScrollTop";
 
 function Accessory(props) {
-  const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(4);
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [wish, setWish] = useState(["찜하기💙"]);
-  useEffect(() => {
-    axios
-      .get("https://raw.githubusercontent.com/mdab4793/shop/main/Acc/Acc.json")
-      .then((result) => {
-        setPosts(result.data);
-      });
-  }, []);
 
+  // function LowPrice() {
+  //   let low = [...props.posts];
+  //   low = low.sort((a, b) => a.price - b.price);
+  //   setprops.posts(low);
+  // }
+
+  // function HighPrice() {
+  //   let high = [...props.posts];
+  //   high = high.sort((a, b) => b.price - a.price);
+  //   setprops.posts(high);
+  // }
   return (
     <div className={styles.container}>
+      {/* <button //가격낮은순으로 정렬
+        onClick={() => {
+          LowPrice();
+        }}
+      >
+        LowPrice
+      </button>{" "}
+      <button
+        onClick={() => {
+          HighPrice();
+        }}
+      >
+        HighPrice
+      </button> */}
       <main className={styles.main}>
-        {posts.slice(offset, offset + limit).map(({ id, title, price }) => (
-          <section className={styles.section} key={id}>
-            <Link to={`/Accdetail/${id}`}>
+        {props.posts
+          .slice(offset, offset + limit)
+          .map(({ id, title, price }) => (
+            <section className={styles.section} key={id}>
               <Category
-                url={posts[id - 34]?.url}
-                title={posts[id - 34]?.title}
-                price={posts[id - 34]?.price}
+                id={id}
+                filter={props.posts[id - 33]?.filter}
+                url1={props.posts[id - 33]?.url1}
+                title={props.posts[id - 33]?.title}
+                price={props.posts[id - 33]?.price}
               />{" "}
-            </Link>
-            {/* <button
+              {/* <button
               onClick={() => {
                 let copy = [...wish];
                 copy = copy + "찜완료❤️";
@@ -50,12 +70,13 @@ function Accessory(props) {
             >
               {wish}
             </button> */}
-          </section>
-        ))}
-      </main>
+            </section>
+          ))}
+      </main>{" "}
+      <ScrollTop />
       <div>
         <Pagination
-          total={posts.length}
+          total={props.posts.length}
           limit={limit}
           page={page}
           setPage={setPage}

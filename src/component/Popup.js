@@ -14,7 +14,7 @@ function Popup() {
             navigate("/cart");
           }}
         >
-          Go to Cart
+          Go Cart
         </button>
         <button
           onClick={() => {

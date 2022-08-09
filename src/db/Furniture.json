@@ -1,0 +1,75 @@
+[
+  {
+    "id": 24,
+    "title": "Chair",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/24.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 500
+  },
+  {
+    "id": 25,
+    "title": "ChairBad",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/25.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 600
+  },
+  {
+    "id": 26,
+    "title": "DeskChairSet",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/26.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 1000
+  },
+  {
+    "id": 27,
+    "title": "WideChair",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/27.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 2000
+  },
+  {
+    "id": 28,
+    "title": "Herman Miller",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/28.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 2500
+  },
+  {
+    "id": 29,
+    "title": "lamp",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/29.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 1000
+  },
+
+  {
+    "id": 30,
+    "title": "BrownChair",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/30.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 5000
+  },
+  {
+    "id": 31,
+    "title": "OfiiceChair",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/31.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 1000
+  },
+  {
+    "id": 32,
+    "title": "MotionDesk",
+    "url1": "https://github.com/mdab4793/shop/blob/main/furniture/32.jpg?raw=true",
+    "filter": "Furniture",
+    "color": ["white", "black", "red", "blue"],
+    "price": 4000
+  }
+]
