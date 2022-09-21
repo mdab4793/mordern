@@ -28,6 +28,5 @@ https://mdab4793.github.io/shop/
 프로젝트 유튜브주소입니다. 
 https://youtu.be/s1lPGQEH5jA
 
- ps.구매기능은 구현하지않았습니다.
 
 
